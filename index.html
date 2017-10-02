@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang='en' ng-app="burmaApp">
+<html lang='en' ng-app='burmaApp'>
   <head>
     <meta charset='utf-8'>
     <meta content='IE=edge' http-equiv='X-UA-Compatible'>
@@ -25,7 +25,7 @@
     <!-- Custom style for image jumbotron/banner -->
     <link href='custom/css/jumbostyle.css' rel='stylesheet'>
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]> <script src="bootstrap/assets/js/ie8-responsive-file-warning.js"></script> <![endif]-->
+    <!--[if lt IE 9]> <script src='bootstrap/assets/js/ie8-responsive-file-warning.js'></script> <![endif]-->
     <script src='bootstrap/assets/js/ie-emulation-modes-warning.js' defer></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>  <![endif]-->
@@ -40,7 +40,7 @@
   </head>
   <body>
 
-    <div ng-controller="BurmaController as burma" class='container' ng-cloak>
+    <div ng-controller='BurmaController as burma' class='container' ng-cloak>
       <div class='jumbotron'>
         <h1>Burma</h1>
       </div>
@@ -61,12 +61,12 @@
         </div>
 
         <div class='col-md-6'> <!-- form contents excluding submit -->
-          <form name='burma_form' id='burma_form' ng-submit="burma.submit()"> <!--  action='process.php' ?? -->
+          <form name='burma_form' id='burma_form' ng-submit='burma.submit()'> <!--  action='process.php' ?? -->
             <div class='col-md-6'> <!-- left form row -->
 
               <div class='form-group'>
                 <label for='burma_form'>Religion</label>
-                <select name='religion' class='form-control' id='religion' ng-model="burma.religion">
+                <select name='religion' class='form-control' id='religion' ng-model='burma.religion'>
                   <option value='christianity'>Christianity</option>
                   <option value='atheism'>Atheism</option>
                   <option value='hinduism'>Hinduism</option>
@@ -89,11 +89,11 @@
 
               <label for='burma_form'>Attractiveness</label>
               <div class='form-inline' id='attr'>
-                1 <input type='radio' name='radio_attr' value='1' ng-model="burma.attractive">
-                2 <input type='radio' name='radio_attr' value='2' ng-model="burma.attractive">
-                3 <input type='radio' name='radio_attr' value='3' ng-model="burma.attractive">
-                4 <input type='radio' name='radio_attr' value='4' ng-model="burma.attractive">
-                5 <input type='radio' name='radio_attr' value='5' ng-model="burma.attractive">
+                1 <input type='radio' name='radio_attr' value='1' ng-model='burma.attractive'>
+                2 <input type='radio' name='radio_attr' value='2' ng-model='burma.attractive'>
+                3 <input type='radio' name='radio_attr' value='3' ng-model='burma.attractive'>
+                4 <input type='radio' name='radio_attr' value='4' ng-model='burma.attractive'>
+                5 <input type='radio' name='radio_attr' value='5' ng-model='burma.attractive'>
               </div>
 
             </div> <!-- right form row -->
@@ -102,19 +102,19 @@
 
           <div class='col-md-6 pull-right'> <!-- submit and results -->
             <br>
-            <button class='btn btn-primary btn-block' type="submit" id='submit'>Submit</button>
+            <button class='btn btn-primary btn-block' type='submit' id='submit'>Submit</button>
             <br>
             <h3 id='daughter_heading' ng-if='burma.submitted'>
               Your daughter is worth...
             </h3>
             <p id='daughter'>
-              <p ng-repeat="currency in burma.results">
+              <p ng-repeat='currency in burma.results'>
                 {{currency}}
               </p>
-              <p ng-if="burma.submitted && burma.results.length === 0">...yeah, she's not worth anything...</p>
+              <p ng-if='burma.submitted && burma.results.length === 0'>...yeah, she's not worth anything...</p>
             </p>
           </div> <!-- submit and results -->
-          <div class="clearfix"></div>
+          <div class='clearfix'></div>
 
         </form>
 
