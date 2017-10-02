@@ -1,51 +1,25 @@
 (function(){
   class BurmaController {
     constructor(calc) {
+      this.calc = calc;
+
       this.education = 'hs';
       this.religion = 'christianity';
       this.attractive = '1';
 
       this.submitted = false;
       this.currency = null;
-      this.results = null;
-
-      this.calc = calc;
+      this.value = 0;
     }
 
     update() {
-      this.currency = this.calc.compute(this.religion, this.attractive, this.education);
-    }
-
-    /**
-    * Utility method to display plurals if necessary
-    */
-    pluralize(currency) {
-      let num = this.currency[currency];
-      if(num === 1) {
-        return `${num} ${currency}`;
-      } else {
-        return `${num} ${currency}s`;
-      }
-    }
-
-    /**
-    * Computes results for template
-    */
-    getResults() {
-      let results = [];
-      for (let key in this.currency) {
-        if(this.currency[key] > 0) {
-          results.push(this._economize(key));
-        }
-      }
-
-      this.results = results;
+      this.value = this.calc.compute(this.religion, this.attractive, this.education);
+      this.currency = this.calc.animalValue(this.value);
     }
 
     submit() {
       this.submitted = true;
       this.update();
-      this.getResults();
     };
   }
 
@@ -63,6 +37,10 @@
 
       value += attractive * 400;
 
+      return value;
+    }
+
+    animalValue(value) {
       let cows = 0;
       let pigs = 0;
       let chickens = 0;

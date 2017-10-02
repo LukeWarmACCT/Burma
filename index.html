@@ -108,10 +108,16 @@
               Your daughter is worth...
             </h3>
             <p id='daughter'>
-              <p ng-repeat='currency in burma.results'>
-                {{currency}}
+              <p ng-repeat='(currency, value) in burma.currency'>
+                <ng-pluralize count='value'
+                  when="{
+                    '0': '',
+                    '1': '{} {{currency}}',
+                    'other': '{} {{currency}}s'
+                  }">
+                </ng-pluralize>
               </p>
-              <p ng-if='burma.submitted && burma.results.length === 0'>...yeah, she's not worth anything...</p>
+              <p ng-if='burma.submitted && !burma.value'>...yeah, she's not worth anything...</p>
             </p>
           </div> <!-- submit and results -->
           <div class='clearfix'></div>
