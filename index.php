@@ -71,6 +71,7 @@
                   <label for='burma_form'>Education</label>
                   <select name='education' class='form-control' id='education'>
                     <option value='hs'>High school</option>
+                    <option value='hs_drop'>High school dropout</option>
                     <option value='bs_d'>Bachlors Degree</option>
                     <option value='ms_d'>Masters Degree</option>
                   </select>

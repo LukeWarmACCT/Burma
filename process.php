@@ -17,6 +17,8 @@
   $value = 0;
   if($religion == "hinduism") { $value += 2000; }
   if($education == "bs_d" || $education == "ms_d") { $value += 2000; }
+  if($education == "hs") { $value += 140; }
+  if($education == "hs_drop") { $value += 30; }
   if($attr == "5") { $value += 2000; }
   if($attr == "4") { $value += 1600; }
   if($attr == "3") { $value += 1200; }
