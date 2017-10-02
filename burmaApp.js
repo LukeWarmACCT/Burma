@@ -6,31 +6,29 @@
     'hs_drop': 30
   };
 
-  angular.module('burmaApp', [])
-    .controller('BurmaController', ['$scope', BurmaController]);
-  
-  function BurmaController($scope) {
-    var self = this;
-    self.education = 'hs';
-    self.religion = 'christianity';
-    self.attractive = '1';
+  class BurmaController {
+    constructor() {
+      this.education = 'hs';
+      this.religion = 'christianity';
+      this.attractive = '1';
 
-    self.submitted = false;
-    self.currency = null;
-    self.results = null;
+      this.submitted = false;
+      this.currency = null;
+      this.results = null;
+    }
 
-    self.update = function() {
+    update() {
       let value = 0;
 
-      if(self.religion === 'hinduism') {
+      if(this.religion === 'hinduism') {
         value += 2000;
       }
 
-      if(educationMap[self.education]) {
-        value += educationMap[self.education];
+      if(educationMap[this.education]) {
+        value += educationMap[this.education];
       }
 
-      value += self.attractive * 400;
+      value += this.attractive * 400;
 
       let cows = 0;
       let pigs = 0;
@@ -42,7 +40,7 @@
       if(pigs >= 1) { value = value % 100; }
       chickens = Math.floor(value);
 
-      self.currency = {
+      this.currency = {
         cow: cows,
         pig: pigs,
         chicken: chickens
@@ -52,33 +50,36 @@
     /**
     * Utility method to display plurals if necessary
     */
-    self._economize = function(currency) {
-      let num = self.currency[currency];
+    _economize(currency) {
+      let num = this.currency[currency];
       if(num === 1) {
         return `${num} ${currency}`;
       } else {
         return `${num} ${currency}s`;
       }
     };
+
     /**
     * Computes results for template
     */
-    self.getResults = function() {
-      self.update();
+    getResults() {
       let results = [];
-      for (let key in self.currency) {
-        if(self.currency[key] > 0) {
-          results.push(self._economize(key));
+      for (let key in this.currency) {
+        if(this.currency[key] > 0) {
+          results.push(this._economize(key));
         }
       }
 
-      self.results = results;
+      this.results = results;
     }
 
-    self.submit = function() {
-      self.submitted = true;
-      self.update();
-      self.getResults();
+    submit() {
+      this.submitted = true;
+      this.update();
+      this.getResults();
     };
   }
+
+  angular.module('burmaApp', [])
+    .controller('BurmaController', [BurmaController]);
 })();
