@@ -1,9 +1,16 @@
+const educationMap = {
+  'bs_d': 2000,
+  'ms_d': 2000,
+  'hs': 140,
+  'hs_drop': 30
+};
+
 angular.module('burmaApp', [])
 .controller('BurmaController', ['$scope', function($scope) {
   var self = this;
-  self.education = "hs";
-  self.religion = "christianity";
-  self.attractive = "1";
+  self.education = 'hs';
+  self.religion = 'christianity';
+  self.attractive = '1';
 
   self.submitted = false;
   self.currency = null;
@@ -11,10 +18,14 @@ angular.module('burmaApp', [])
 
   self.update = function() {
     let value = 0;
-    if(self.religion == "hinduism") { value += 2000; }
-    if(self.education == "bs_d" || self.education == "ms_d") { value += 2000; }
-    else if(self.education == "hs") { value += 140; }
-    else if(self.education == "hs_drop") { value += 30; }
+
+    if(self.religion === 'hinduism') {
+      value += 2000;
+    }
+
+    if(educationMap[self.education]) {
+      value += educationMap[self.education];
+    }
 
     value += self.attractive * 400;
 
