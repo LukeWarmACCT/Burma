@@ -7,7 +7,9 @@
   };
 
   angular.module('burmaApp', [])
-  .controller('BurmaController', ['$scope', function($scope) {
+    .controller('BurmaController', ['$scope', BurmaController]);
+  
+  function BurmaController($scope) {
     var self = this;
     self.education = 'hs';
     self.religion = 'christianity';
@@ -78,5 +80,5 @@
       self.update();
       self.getResults();
     };
-  }]);
+  }
 })();
